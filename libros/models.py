@@ -21,7 +21,7 @@ class Libro(models.Model):
 class Calificacion(models.Model):
     libro = models.ForeignKey(Libro, on_delete=models.CASCADE, related_name='calificaciones')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    puntaje = models.IntegerField()
+    puntaje = models.FloatField()
 
     def __str__(self):
         return f"{self.user.username} - {self.libro.nombre}: {self.puntaje}"

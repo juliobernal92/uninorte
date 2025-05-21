@@ -17,6 +17,12 @@ class LibroSerializer(serializers.ModelSerializer):
 
 # Serializador para Calificación
 class CalificacionSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+
     class Meta:
         model = Calificacion
-        fields = '__all__'
+        fields = ['id', 'libro', 'puntaje', 'username']  # 'user' no es necesario si usas 'username'
+
+    def create(self, validated_data):
+        validated_data['user'] = self.context['request'].user
+        return super().create(validated_data)
