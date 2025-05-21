@@ -1,6 +1,6 @@
 # libros/serializers.py
 from rest_framework import serializers
-from .models import Autor, Libro, Calificacion
+from .models import Autor, Libro, Calificacion, Genero
 from django.contrib.auth.models import User
 
 # Serializador para Autor
@@ -26,3 +26,9 @@ class CalificacionSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
         return super().create(validated_data)
+
+
+class GeneroSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genero
+        fields = '__all__'
