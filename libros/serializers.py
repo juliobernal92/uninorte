@@ -15,8 +15,8 @@ class LibroSerializer(serializers.ModelSerializer):
         model = Libro
         fields = '__all__'
 
-# Serializador para Calificación
-class CalificacionSerializer(serializers.ModelSerializer):
+# Serializador para Calificación produccion
+'''class CalificacionSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username', read_only=True)
 
     class Meta:
@@ -25,6 +25,20 @@ class CalificacionSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
+        return super().create(validated_data)
+'''
+#Serializer desarrollo
+class CalificacionSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source='user.username', read_only=True)
+
+    class Meta:
+        model = Calificacion
+        fields = ['id', 'libro', 'puntaje', 'user', 'username']  # Habilitamos 'user' para pruebas
+
+    def create(self, validated_data):
+        # Si el usuario no viene en el JSON, usá request.user
+        if 'user' not in validated_data:
+            validated_data['user'] = self.context['request'].user
         return super().create(validated_data)
 
 
