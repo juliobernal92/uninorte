@@ -22,6 +22,10 @@ class CalificacionViewSet(viewsets.ModelViewSet):
     queryset = Calificacion.objects.all()
     serializer_class = CalificacionSerializer
     permission_classes = [IsAuthenticated] 
+    def get_queryset(self):
+        # Solo devuelve las calificaciones del usuario autenticado
+        user = self.request.user
+        return Calificacion.objects.filter(user=user)
 
 class GeneroViewSet(viewsets.ModelViewSet):
     queryset = Genero.objects.all()

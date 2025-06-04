@@ -16,7 +16,7 @@ class LibroSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 # Serializador para Calificación produccion
-'''class CalificacionSerializer(serializers.ModelSerializer):
+class CalificacionSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username', read_only=True)
 
     class Meta:
@@ -26,8 +26,8 @@ class LibroSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data['user'] = self.context['request'].user
         return super().create(validated_data)
-'''
-#Serializer desarrollo
+
+'''#Serializer desarrollo
 class CalificacionSerializer(serializers.ModelSerializer):
     username = serializers.CharField(source='user.username', read_only=True)
 
@@ -40,6 +40,7 @@ class CalificacionSerializer(serializers.ModelSerializer):
         if 'user' not in validated_data:
             validated_data['user'] = self.context['request'].user
         return super().create(validated_data)
+        '''
 
 
 class GeneroSerializer(serializers.ModelSerializer):
