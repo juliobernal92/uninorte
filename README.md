@@ -72,7 +72,7 @@ DATABASES = {
 ```
 En el proyecto, los datos sensibles estan protegidas con variables de entorno en .env (el cual esta en el gitignore, por eso no se sube al repositorio).
 
-### API BIBLIOTECA - USOS
+## API BIBLIOTECA - USOS
 #### Explicación del Programa y Cómo Funciona
 Esta API RESTful fue desarrollada utilizando Django y Django REST Framework. Su propósito principal es permitir la gestión de libros, géneros y autores, así como permitir a los usuarios registrar sus opiniones a través de calificaciones.
 
@@ -82,7 +82,7 @@ Esta API RESTful fue desarrollada utilizando Django y Django REST Framework. Su 
 - Sistema de calificaciones: Los usuarios autenticados pueden calificar los libros, permitiendo así generar valoraciones promedio.
 - Registro de usuarios: El sistema permite registrar nuevos usuarios utilizando el modelo por defecto de Django (User), con una vista personalizada y un serializer que valida y crea los usuarios de forma segura.
 
-### Prueba en Postman:
+## Prueba en Postman:
 
 #### Registro:
 ```http
@@ -396,7 +396,7 @@ def eliminar_libro(request, pk):
     return Response({'mensaje': 'Libro eliminado correctamente'}, status=status.HTTP_204_NO_CONTENT)
 ```
 
-### Documentación del Script
+## Documentación del Script
 Este script en Python está diseñado para conectarse a un proyecto Django y realizar análisis exploratorios de datos a partir de los registros y valoraciones disponibles en el sistema. Se utiliza principalmente para generar visualizaciones útiles para comprender mejor la información almacenada en las siguientes entidades del modelo:
 
 - Autor
@@ -519,3 +519,25 @@ La librería pandas es fundamental para este script porque:
 - Es compatible directamente con Seaborn y Matplotlib, haciendo el flujo de análisis y visualización mucho más fluido.
 
 
+## Licencia
+
+Este proyecto está licenciado bajo los términos de la **Licencia MIT**.
+
+Puedes usar, copiar, modificar y distribuir este software con o sin fines comerciales, siempre que mantengas el aviso de copyright original y esta licencia.
+
+
+### Bibliotecas de terceros
+
+Este proyecto utiliza las siguientes bibliotecas de código abierto, cada una sujeta a sus propias licencias:
+
+- **Django** (BSD License)
+- **djangorestframework** (BSD License)
+- **djangorestframework_simplejwt** (MIT License)
+- **pandas** (BSD License)
+- **matplotlib** (PSF License)
+- **seaborn** (BSD License)
+- **numpy** (BSD License)
+- **SQLAlchemy** (MIT License)
+- **python-decouple**, **pillow**, **psycopg2-binary**, **PyJWT**, entre otras.
+
+Consulta la documentación oficial de cada paquete para más detalles sobre sus licencias.
