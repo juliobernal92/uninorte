@@ -38,7 +38,7 @@ POST http://127.0.0.1:8000/api/auth/login/
 
 Ahi se genera el JWT, que luego debe usarse para las demás aplicaciones.
 
-### Autores:
+### AUTORES:
 
 #### Obtener Todos:
 ```http
@@ -112,5 +112,72 @@ def obtener_autor(request, pk):
     return Response(serializer.data)
 ```
 
+#### Actualizar Autor
+```http
+PUT http://127.0.0.1:8000/api/autores/1/actualizar/
+```
+Se pasa el ID a actualizar en la URL.
 
+**Auth Type**: Bearer Token: el JWT generado.
 
+![Image](https://github.com/user-attachments/assets/ff547574-aefe-41b0-b88b-369234db0847)
+
+#### Codigo para Actualizar:
+```Python
+# Actualizar autor
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def actualizar_autor(request, pk):
+    try:
+        autor = Autor.objects.get(pk=pk)
+    except Autor.DoesNotExist:
+        return Response({'error': 'Autor no encontrado'}, status=status.HTTP_404_NOT_FOUND)
+
+    serializer = AutorSerializer(autor, data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+```
+
+### LIBROS:
+
+#### Obtener Todos los libros:
+```http
+GET http://127.0.0.1:8000/api/libros/
+```
+**Auth Type**: Bearer Token: el JWT generado.
+
+![Image](https://github.com/user-attachments/assets/bfcfee25-c2d0-4afe-b16d-b47c0132a8c7)
+
+#### Codigo para obtener todos los libros:
+```Python
+# Listar libros
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def listar_libros(request):
+    libros = Libro.objects.all()
+    serializer = LibroSerializer(libros, many=True)
+    return Response(serializer.data)
+```
+
+#### Insertar Libros
+```http
+GET http://127.0.0.1:8000/api/libros/crear/
+```
+**Auth Type**: Bearer Token: el JWT generado.
+
+![Image](https://github.com/user-attachments/assets/5318a3b6-ea9a-455a-8e5f-e05f59b01610)
+
+#### Codigo para insertar libros:
+```Python
+# Crear Libro
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def crear_libro(request):
+    serializer = LibroSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+```
