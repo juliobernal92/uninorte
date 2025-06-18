@@ -395,3 +395,127 @@ def eliminar_libro(request, pk):
     libro.delete()
     return Response({'mensaje': 'Libro eliminado correctamente'}, status=status.HTTP_204_NO_CONTENT)
 ```
+
+### Documentación del Script
+Este script en Python está diseñado para conectarse a un proyecto Django y realizar análisis exploratorios de datos a partir de los registros y valoraciones disponibles en el sistema. Se utiliza principalmente para generar visualizaciones útiles para comprender mejor la información almacenada en las siguientes entidades del modelo:
+
+- Autor
+- Libro
+- Calificación
+- Género
+- Usuario (User)
+
+#### El script utiliza las siguientes bibliotecas principales:
+
+- Django: Para acceder a los modelos y datos del ORM.
+- pandas: Para convertir consultas en DataFrames y facilitar la manipulación de los datos.
+- matplotlib.pyplot y seaborn: Para generar gráficos visualmente atractivos.
+
+El acceso a los modelos se configura añadiendo el path raíz del proyecto y estableciendo la variable de entorno DJANGO_SETTINGS_MODULE. Luego, se inicializa Django para permitir la consulta de datos directamente desde los modelos.
+
+#### Generación y Explicación de Gráficos
+A continuación, se describen las funciones principales del script y los gráficos que genera:
+
+#### promedio_calificaciones_por_genero()
+Objetivo: Mostrar el promedio de calificaciones agrupadas por género literario.
+
+Gráfico: Gráfico de barras.
+
+Uso de pandas: Se convierte la consulta en un DataFrame para usarla con Seaborn.
+
+![Image](https://github.com/user-attachments/assets/cbf292bf-5c9c-44b2-9354-ad9069073a3e)
+
+#### top_autores_por_cantidad_libros()
+Objetivo: Mostrar los 10 autores con más libros registrados.
+
+Gráfico: Gráfico de barras.
+
+Uso de pandas: Se usa para ordenar y graficar los datos con claridad.
+
+![Image](https://github.com/user-attachments/assets/1068089b-553e-43df-bdb1-3cee67acd192)
+
+#### distribucion_calificaciones()
+Objetivo: Visualizar la distribución de puntajes otorgados en las calificaciones.
+
+Gráfico: Histograma con curva KDE.
+
+Uso de pandas: Se extraen los valores de calificaciones y se convierten en DataFrame.
+
+![Image](https://github.com/user-attachments/assets/7b13c970-ba52-48fc-8067-57f021ea0eb0)
+
+#### top_libros_por_cantidad_calificaciones()
+Objetivo: Mostrar los libros con mayor cantidad de calificaciones.
+
+Gráfico: Gráfico de barras.
+
+![Image](https://github.com/user-attachments/assets/d0c1c144-1e95-43dd-ab2c-349e475c4dbd)
+
+#### promedio_calificaciones_por_autor()
+Objetivo: Calcular y visualizar el promedio de calificaciones por autor.
+
+Gráfico: Gráfico de barras.
+
+![Image](https://github.com/user-attachments/assets/70cf6ad9-8836-4e60-af8c-16f5ce887e30)
+
+#### top_usuarios_por_calificaciones()
+Objetivo: Identificar a los 10 usuarios que más calificaciones han realizado.
+
+Gráfico: Gráfico de barras.
+
+![Image](https://github.com/user-attachments/assets/7f7bcb66-c6ea-45aa-9cab-01b7deaee3ef)
+
+### libros_sin_calificaciones()
+Objetivo: Listar todos los libros que no tienen ninguna calificación asociada.
+
+Salida: Se imprime un DataFrame con los nombres de los libros.
+
+```bash
+Libros sin calificaciones:
+Empty DataFrame
+Columns: []    
+Index: []   
+```
+En la base de datos todos los libros tienen calificaciones.
+
+#### top_libros_por_cantidad_y_promedio()
+Objetivo: Mostrar los libros con al menos 5 calificaciones, ordenados por cantidad y calidad (promedio).
+
+Gráfico: Scatter plot (diagrama de dispersión).
+
+Uso de pandas: Para combinar cantidad y promedio en un gráfico informativo.
+
+![Image](https://github.com/user-attachments/assets/1f7e2484-9a4d-4897-ab25-25b8ebad6dab)
+
+#### distribucion_libros_por_anio()
+Objetivo: Analizar la cantidad de libros lanzados por año.
+
+Gráfico: Gráfico de línea.
+
+Uso de ExtractYear: Para agrupar por año la fecha de lanzamiento.
+
+![Image](https://github.com/user-attachments/assets/f6610903-1494-4064-b910-158e4e51fb2b)
+
+#### boxplot_calificaciones_por_genero()
+Objetivo: Mostrar la distribución de calificaciones (mínimos, máximos, medianas, etc.) por género.
+
+Gráfico: Diagrama de caja (boxplot).
+
+Uso de pandas: Para transformar y renombrar columnas de datos relacionados.
+
+![Image](https://github.com/user-attachments/assets/1885e00f-0abc-46a5-9900-e3c5dbccac38)
+
+#### top_generos_por_cantidad_libros()
+Objetivo: Identificar los géneros con más libros registrados.
+
+Gráfico: Gráfico de barras.
+
+![Image](https://github.com/user-attachments/assets/94565349-453f-4e13-85e4-ec5acdecb8ff)
+
+#### ¿Por qué usamos pandas?
+La librería pandas es fundamental para este script porque:
+
+- Permite transformar consultas complejas de Django ORM en estructuras tipo tabla (DataFrames).
+- Facilita la limpieza, agrupamiento y ordenamiento de los datos antes de graficarlos.
+- Es compatible directamente con Seaborn y Matplotlib, haciendo el flujo de análisis y visualización mucho más fluido.
+
+
