@@ -405,6 +405,12 @@ Este script en Python está diseñado para conectarse a un proyecto Django y rea
 - Género
 - Usuario (User)
 
+Para ejecutar el script:
+```text
+Ejecutar el script analisis_libros.py
+```
+Que se encuentra en la carpeta reportes.
+
 #### El script utiliza las siguientes bibliotecas principales:
 
 - Django: Para acceder a los modelos y datos del ORM.
