@@ -525,6 +525,43 @@ La librería pandas es fundamental para este script porque:
 - Es compatible directamente con Seaborn y Matplotlib, haciendo el flujo de análisis y visualización mucho más fluido.
 
 
+## Sistema de Recomendación de Géneros (Comando Django)
+Este script implementa un comando personalizado de Django que permite recomendar libros por género, ordenados por cantidad de calificaciones y promedio de puntuación. Es un sistema interactivo en consola que se ejecuta con:
+
+```bash
+python manage.py recomendar_genero
+```
+
+### ¿Qué hace este comando?
+- Muestra una lista de géneros disponibles en la base de datos, cada uno con un número.
+- Permite al usuario seleccionar un género escribiendo el número correspondiente.
+- Al elegir un género, muestra todos los libros de ese género, ordenados por:
+- Cantidad de calificaciones (más calificados primero).
+- Promedio de calificación (en caso de empate).
+
+**Para cada libro se muestra:**
+
+- El nombre del libro
+- La cantidad de calificaciones que ha recibido
+- El promedio de las calificaciones
+
+Tras mostrar la recomendación, regresa al menú principal, permitiendo al usuario hacer más consultas o salir.
+
+El ciclo continúa hasta que el usuario selecciona la opción "Salir".
+
+Ejemplo de uso en consola
+
+<img width="542" height="600" alt="Image" src="https://github.com/user-attachments/assets/f7c39a6a-409b-4285-b4e7-5f803d755eaa" />
+
+**¿Cómo funciona internamente?**
+- Carga todos los géneros de la base de datos y los muestra enumerados.
+- Espera la selección del usuario (ingresa el número del género o “Salir”).
+- Valida la entrada: si es un número válido y corresponde a un género, muestra los libros de ese género.
+- Para cada libro del género seleccionado, muestra la cantidad de calificaciones y el promedio.
+- El menú se repite hasta que el usuario elige salir.
+
+
+
 ## Licencia
 
 Este proyecto está licenciado bajo los términos de la **Licencia MIT**.
