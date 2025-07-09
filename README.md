@@ -1,4 +1,4 @@
-﻿﻿# Aplicacion Biblioteca Uninorte - Julio Bernal
+# Aplicacion Biblioteca Uninorte - Julio Bernal
 Proyecto de Programación V
 
 ## Pasos para probar el proyecto
