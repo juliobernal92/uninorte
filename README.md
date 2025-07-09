@@ -1,4 +1,4 @@
-﻿# Aplicacion Biblioteca Uninorte
+﻿﻿# Aplicacion Biblioteca Uninorte - Julio Bernal
 Proyecto de Programación V
 
 ## Pasos para probar el proyecto
@@ -404,6 +404,12 @@ Este script en Python está diseñado para conectarse a un proyecto Django y rea
 - Calificación
 - Género
 - Usuario (User)
+
+Para ejecutar el script:
+```text
+Ejecutar el script analisis_libros.py
+```
+Que se encuentra en la carpeta reportes.
 
 #### El script utiliza las siguientes bibliotecas principales:
 
